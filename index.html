@@ -44,3 +44,89 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Auto-Community</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#chat">Chat</a></li>
+                <li><a href="#info">Auto-Infos</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Autos</h2>
+        <div class="car-grid">
+            <div class="car-card" onclick="showInfo('bmw')">
+                <img src="bmw-m3.jpg" alt="BMW M3">
+                <p>BMW M3</p>
+            </div>
+            <div class="car-card" onclick="showInfo('mercedes')">
+                <img src="mercedes-amg.jpg" alt="Mercedes AMG">
+                <p>Mercedes AMG</p>
+            </div>
+            <div class="car-card" onclick="showInfo('audi')">
+                <img src="audi-rs6.jpg" alt="Audi RS6">
+                <p>Audi RS6</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="info">
+        <h2>Auto-Infos</h2>
+        <div id="info-content"></div>
+        <div id="more-info" style="display:none;"></div> <!-- Neues Feld für dynamische Infos -->
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Auto-Community</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+function showInfo(car) {
+    const carInfo = {
+        bmw: {
+            name: "BMW M3",
+            image: "bmw-m3.jpg",
+            details: "Der BMW M3 ist ein sportliches Fahrzeug mit herausragender Leistung und einem dynamischen Design."
+        },
+        mercedes: {
+            name: "Mercedes AMG",
+            image: "mercedes-amg.jpg",
+            details: "Die Mercedes AMG-Modelle bieten exklusive Performance mit Luxus und Komfort."
+        },
+        audi: {
+            name: "Audi RS6",
+            image: "audi-rs6.jpg",
+            details: "Der Audi RS6 kombiniert beeindruckende Leistung mit einem eleganten und funktionalen Design."
+        }
+    };
+
+    const infoSection = document.getElementById("more-info");
+
+    // Neue Info für das ausgewählte Auto hinzufügen
+    const newInfo = document.createElement("div");
+    newInfo.innerHTML = `
+        <h3>${carInfo[car].name}</h3>
+        <img src="${carInfo[car].image}" alt="${carInfo[car].name}">
+        <p>${carInfo[car].details}</p>
+    `;
+
+    infoSection.style.display = "block"; // Zeigt den Bereich mit den Infos an
+    infoSection.appendChild(newInfo); // Fügt neue Info zum Abschnitt hinzu
+}
+
+
