@@ -35,3 +35,8 @@ function showInfo(car) {
 function closeInfo() {
     document.getElementById("infoBox").classList.add("hidden");
 }
+document.querySelectorAll('.car-card').forEach(card => {
+    card.addEventListener('click', () => {
+        alert('Hier kommen die Infos zum ' + card.innerText);
+    });
+});
